@@ -38,7 +38,6 @@ class baidu(object):
 
     def login(self, user = '', pwd = ''):
         print 'User: ' + user
-        print 'password: ' + pwd
 
         self._initial()
         self._getToken()

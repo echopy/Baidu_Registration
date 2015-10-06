@@ -7,7 +7,7 @@ import time
 import json
 import sys
 reload(sys)
-sys.setdefaultencoding('utf8')
+sys.setdefaultencoding('utf-8')
 
 TIEBA_URL = "http://tieba.baidu.com"
 GETLIKE_URL = "http://tieba.baidu.com/f/like/mylike"
@@ -64,11 +64,11 @@ class autoSign:
         request = urllib2.Request(SIGN_URL, headers = signHeaders)
         result = json.loads(self._opener.open(request, urllib.urlencode(signData).encode("utf-8")).read().decode("utf-8"))
         if(result["no"] == 0):           #签到成功
-            return "{0}吧签到成功,今天是第{1}个签到!".format(url[1], result["data"]["uinfo"]["user_sign_rank"])
+            return u"{0}吧签到成功,今天是第{1}个签到!".format(url[1], result["data"]["uinfo"]["user_sign_rank"])
         elif(result["no"] == 1101):      #已签过
-            return "{0}吧之前已经签到过了哦!".format(url[1])
+            return u"{0}吧之前已经签到过了哦!".format(url[1])
         else:                            #出错
-            return "未知错误!" + "\n" + url + "\n" + result
+            return u"未知错误!" + "\n" + url + "\n" + result
 
 
 def main():
